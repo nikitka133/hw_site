@@ -1,0 +1,47 @@
+{% extends '../layout.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'geography/css/index.css' %}">
+{% endblock %}
+
+{% block title %}
+    География
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <div class='page-title'>
+        <img class='title-img' src="{% static 'main/img/python-logo.png' %}">
+        <span class='title-text text'>География</span>
+    </div>
+    <div class='charts'>
+        {% for item in info %}
+            <div class='chart-block'>
+                    <label class='chart-title text'>{{ item.name }}</label>
+                <div class='chart-main'>
+                    <canvas width="500" height="500" id='{{ item.individual_id }}'></canvas>
+                    <table class='chart-table text'>
+                        <tr>
+                            <th>Город</th>
+                            <th>Итого</th>
+                        </tr>
+                        {% for data in item.data_as_dict %}
+                            <tr>
+                                <th class='city_{{ item.individual_id }}'>{{ data.city }}</th>
+                                <th class='{{ item.individual_id }}'>{{ data.value }}</th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer%}
+    <script src="{% static 'geography/js/index.js' %}"></script>
+{% endblock %}

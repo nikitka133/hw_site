@@ -1,0 +1,18 @@
+.page-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+}
+
+.title-img {
+	width: 150px;
+	height: 150px;
+	margin: 10px;
+}
+
+.title-text {
+	font-size: 50px!important;
+}
+

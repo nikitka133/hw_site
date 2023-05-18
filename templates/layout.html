@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'vacancies_site/css/static.css' %}">
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'vacancies_site/css/index.css' %}">
+  <link type="image/png" sizes="16x16" rel="icon"
+        href="{% static 'vacancies_site/img/favicon/16x16.png' %}">
+  <link type="image/png" sizes="32x32" rel="icon"
+        href="{% static 'vacancies_site/img/favicon/32x32.png' %}">
+  <link type="image/png" sizes="96x96" rel="icon"
+        href="{% static 'vacancies_site/img/favicon/96x96.png' %}">
+  <link type="image/png" sizes="120x120" rel="icon"
+        href="{% static 'vacancies_site/img/favicon/120x120.png' %}">
+  <title>
+    {% block title %}
+    {% endblock %}
+  </title>
+  {% block links %}
+  {% endblock %}
+</head>
+
+<body>
+<header>
+  <div class='header'>
+    <span class='logo text' id='logo-button'>your dream job</span>
+  </div>
+  {% block header %}
+  {% endblock %}
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class='left-menu'>
+        <button class='dropdown-menu text' onclick='ToggleShower()'>Меню
+        </button>
+        <div class='dropdown-buttons' id='dropper'>
+          <button class='link-button text' id='main'>Главная</button>
+          <button class='link-button text' id='demand'>Востребованность
+          </button>
+          <button class='link-button text' id='geography'>География</button>
+          <button class='link-button text' id='skills'>Навыки</button>
+          <button class='link-button text' id='last_vacancies'>Последние
+            вакансии
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-md-4'>
+      {% block body %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'vacancies_site/js/index.js' %}"></script>
+{% block footer %}
+{% endblock %}
+
+</body>
+</html>

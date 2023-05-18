@@ -1,0 +1,59 @@
+{% extends '../layout.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'last_vacancies/css/index.css' %}">
+{% endblock %}
+
+{% block title %}
+    Последние вакансии
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <div class='page-title'>
+        <img class='title-img' src="{% static 'main/img/python-logo.png' %}">
+        <span class='title-text text'>Последние опубликованные вакансии</span>
+    </div>
+    <div class='vacancies_list'>
+        {% for vacancy in vacancies %}
+            <div class='vacancy'>
+                <div class='vacancy-header'>
+                    {% if vacancy.logo.original %}
+                        <img class='vacancy-logo' src="{{ vacancy.logo.original }}">
+                    {% endif %}
+                    <span class='vacancy-name text'>{{ vacancy.name }}</span>
+                </div>
+                <div class=vacancy-description>
+                    <div class='vacancy-company'>
+                        <span class='text'>{{ vacancy.company }}</span>
+                        <span class='text'>/</span>
+                        <span class='text'>{{ vacancy.area }}</span>
+                    </div>
+                    <div class='vacancy-description text' style="line-height: normal;font-size: 16px;margin: 0 5%;">
+                        {{ vacancy.description }}
+                    </div>
+                    <div class='vacancy-requirements'>
+                        <span class='text'><b>Требования</b></span>
+                        <span class='text'>{{ vacancy.skills }}</span>
+                    </div>
+                    <div class='vacancy-salary'>
+                        <span class='text'><b>Оклад</b></span>
+                        <span class='text'>{{ vacancy.salary }}</span>
+                    </div>
+                    <div class='vacancy-footer'>
+                        <span class='vacancy-published text'>{{ vacancy.date_published }}</span>
+                        <a class='vacancy-url text' href='{{ vacancy.url }}'>К вакансии!</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer%}
+    <script src="{% static 'last_vacancies/js/index.js' %}"></script>
+{% endblock %}

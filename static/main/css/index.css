@@ -1,0 +1,33 @@
+.description {
+	display: flex;
+    flex-direction: column;
+}
+
+.description-block {
+	display: flex;
+	flex-direction: column;
+	margin: 20px 30px 10px 0;
+}
+
+.description-img {
+	width: 80px;
+	height: 80px;
+}
+
+.subtitle {
+	font-size: 40px!important;
+}
+
+.subtitle-desc {
+	width: 80%;
+	line-height: 25px!important;
+	font-size: 20px!important;
+}
+
+.left-side {
+	align-items: flex-start;
+}
+
+.right-side {
+	align-items: flex-end;
+}

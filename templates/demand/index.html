@@ -1,0 +1,47 @@
+{% extends '../layout.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'demand/css/index.css' %}">
+{% endblock %}
+
+{% block title %}
+    Востребованность
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <div class='page-title'>
+        <img class='title-img' src="{% static 'main/img/python-logo.png' %}">
+        <span class='title-text text'>Востребованность</span>
+    </div>
+    <div class='charts'>
+        {% for item in demand %}
+            <div class='chart-block'>
+                <label class='chart-title text'>{{ item.name }}</label>
+                <div class='chart-main'>
+                    <canvas width="500" height="500" id='{{ item.individual_id }}'></canvas>
+                    <table class='chart-table text'>
+                        <tr>
+                            <th>Год</th>
+                            <th>Итого</th>
+                        </tr>
+                        {% for year, value in item.values_as_dict.items %}
+                        <tr>
+                            <th>{{ year }}</th>
+                            <th class='{{ item.individual_id }}'>{{ value }}</th>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer%}
+    <script type="text/javascript" src="{% static 'demand/js/index.js' %}"></script>
+{% endblock %}
